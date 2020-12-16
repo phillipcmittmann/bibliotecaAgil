@@ -1,0 +1,23 @@
+[
+    {
+        "titulo": "Como fazer sentido e bater o martelo",
+        "autor": "Alexandro Aolchique",
+        "ano": "2017",
+        "status": "Disponivel",
+        "emprestadoPara": ""
+    },
+    {
+        "titulo": "Código Limpo",
+        "autor": "Tio Bob",
+        "ano": "2001",
+        "status": "Disponivel",
+        "emprestadoPara": ""
+    },
+    {
+        "titulo": "Basquete 101",
+        "autor": "Hortência Marcari",
+        "ano": "2010",
+        "status": "Disponivel",
+        "emprestadoPara": ""
+    }
+]
