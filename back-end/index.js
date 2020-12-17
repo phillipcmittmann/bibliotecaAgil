@@ -7,6 +7,20 @@ app.use(bodyParser.json());
 
 const LivrosModel = require('./database/models/LivrosModel');
 
+app.get('/livros', (req, res) => {
+    LivrosModel
+        .findAll({
+            raw: true,
+            order: [
+                ['id', 'DESC']
+            ]
+        })
+        .then(livros => {
+            res.statusCode = 200;
+            res.json(livros);
+        });
+});
+
 app.listen(4000, () => {
     console.log('Api rodando.');
 
