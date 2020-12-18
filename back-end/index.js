@@ -21,27 +21,48 @@ app.get('/livros', (req, res) => {
         });
 });
 
+app.post('/retirarLivro/:id', (req, res) => {
+    if (isNaN(req.params.id)) {
+        res.sendStatus(400);
+    } else {
+        var id = parseInt(req.params.id);
+
+        LivrosModel
+            .update({ disponivel: 0 }, 
+                {
+                    where: { id: id }
+                }
+            );
+
+        res.sendStatus(200);
+    }
+})
+
 app.listen(4000, () => {
     console.log('Api rodando.');
 
-    LivrosModel.bulkCreate([
-        {
-            titulo: 'Como fazer sentido e bater o martelo',
-            autor: 'Alexandro Aolchique',
-            ano: '2017',
-            emprestado_para: null
-        },
-        {
-            titulo: 'Código Limpo',
-            autor: 'Tio Bob',
-            ano: '2001',
-            emprestado_para: null
-        },
-        {
-            titulo: 'Basquete 101',
-            autor: 'Hortência Marcari',
-            ano: '2010',
-            emprestado_para: null
-        },
-    ])
+    LivrosModel
+        .drop()
+        .then(() => {
+            LivrosModel.bulkCreate([
+                {
+                    titulo: 'Como fazer sentido e bater o martelo',
+                    autor: 'Alexandro Aolchique',
+                    ano: '2017',
+                    emprestado_para: null
+                },
+                {
+                    titulo: 'Código Limpo',
+                    autor: 'Tio Bob',
+                    ano: '2001',
+                    emprestado_para: null
+                },
+                {
+                    titulo: 'Basquete 101',
+                    autor: 'Hortência Marcari',
+                    ano: '2010',
+                    emprestado_para: null
+                },
+            ]);
+        });
 });

@@ -2,6 +2,12 @@ const { Sequelize } = require('sequelize');
 const connection = require('../database');
 
 const LivrosModel = connection.define('livros', {
+    id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER(11).UNSIGNED
+    },
     titulo: {
         type: Sequelize.STRING,
         allowNull: false
