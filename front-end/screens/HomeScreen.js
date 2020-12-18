@@ -4,23 +4,24 @@ import {
     StyleSheet,
 } from 'react-native';
 
-import ButtonHome from '../components/ButtonHome';
+import Button from '../components/Button';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
     return (
         <View
             style={ styles.container }
         >
-            <ButtonHome
-                title='Retirar livro'
+            <Button
+                titulo='Retirar livro'
             />
 
-            <ButtonHome
-                title='Devolver livro'
+            <Button
+                titulo='Devolver livro'
             />
 
-            <ButtonHome
-                title='Doar livro'
+            <Button
+                titulo='Doar livro'
+                onPress={ () => navigation.navigate('DoarLivro') }
             />
         </View>
     )

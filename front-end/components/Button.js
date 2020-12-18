@@ -5,16 +5,16 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-const ButtonHome = (props) => {
+const Button = (props) => {
     return (
         <TouchableOpacity
             style={ styles.buttonContainer }
-            onPress={null}
+            onPress={ props.onPress }
         >
             <Text
                 style={ styles.textStyle }
             >
-                {props.title}
+                {props.titulo}
             </Text>
         </TouchableOpacity>
     )
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 2,
         borderRadius: 5,
-        marginVertical: 10,
+        marginVertical: 15,
         width: 200,
         alignItems: 'center',
         backgroundColor: 'white'
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ButtonHome;
+export default Button;
