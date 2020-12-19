@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     textStyle: {
-        fontSize: 20,
-        marginVertical: 20
+        fontSize: 25,
+        marginVertical: 10
     }
 });
 
