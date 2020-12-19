@@ -36,7 +36,20 @@ app.post('/retirarLivro/:id', (req, res) => {
 
         res.sendStatus(200);
     }
-})
+});
+
+app.post('/doarLivro', (req, res) => {
+    LivrosModel
+        .create({
+            titulo: req.body.titulo,
+            autor: req.body.autor,
+            ano: req.body.ano,
+            disponivel: req.body.disponivel,
+            emprestado_para: req.body.emprestadoPara
+        });
+
+    res.sendStatus(201);
+});
 
 app.listen(4000, () => {
     console.log('Api rodando.');
