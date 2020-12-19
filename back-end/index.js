@@ -41,11 +41,11 @@ app.post('/retirarLivro/:id', (req, res) => {
 app.post('/doarLivro', (req, res) => {
     LivrosModel
         .create({
-            titulo: req.body.titulo,
-            autor: req.body.autor,
-            ano: req.body.ano,
-            disponivel: req.body.disponivel,
-            emprestado_para: req.body.emprestadoPara
+            titulo: req.body.livro.titulo,
+            autor: req.body.livro.autor,
+            ano: req.body.livro.ano,
+            disponivel: req.body.livro.disponivel,
+            emprestado_para: req.body.livro.emprestadoPara
         });
 
     res.sendStatus(201);
