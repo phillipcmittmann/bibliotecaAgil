@@ -21,20 +21,24 @@ app.get('/livros', (req, res) => {
         });
 });
 
-app.post('/retirarLivro/:id', (req, res) => {
-    if (isNaN(req.params.id)) {
-        res.sendStatus(400);
+app.post('/retirarLivro', (req, res) => {
+    if (isNaN(req.body.id)) {
+        res.sendStatus(400).sendStatus('Livro não encontrado.');
     } else {
-        var id = parseInt(req.params.id);
+        var id = parseInt(req.body.id);
 
         LivrosModel
-            .update({ disponivel: 0 }, 
+            .update(
+                { 
+                    disponivel: 0,
+                    emprestado_para: req.body.emprestadoPara
+                }, 
                 {
                     where: { id: id }
                 }
             );
 
-        res.sendStatus(200);
+        res.sendStatus(200).send('Livro retirado com sucesso.');
     }
 });
 
@@ -50,6 +54,27 @@ app.post('/doarLivro', (req, res) => {
 
     res.status(201).send('Livro cadastrado com sucesso.');
 });
+
+app.post('/devolverLivro', (req, res) => {
+    if (isNaN(req.body.id)) {
+        res.sendStatus(400).sendStatus('Livro não encontrado.');
+    } else {
+        var id = parseInt(req.body.id);
+
+        LivrosModel
+            .update(
+                { 
+                    disponivel: 1,
+                    emprestado_para: null
+                }, 
+                {
+                    where: { id: id }
+                }
+            );
+
+        res.sendStatus(200).send('Livro devolvido com sucesso.');
+    }
+})
 
 app.listen(4000, () => {
     console.log('Api rodando.');
