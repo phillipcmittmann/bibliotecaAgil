@@ -10,6 +10,7 @@ const LivrosModel = require('./database/models/LivrosModel');
 app.get('/livros', (req, res) => {
     LivrosModel
         .findAll({
+            where: { disponivel: 1 },
             raw: true,
             order: [
                 ['id', 'DESC']
