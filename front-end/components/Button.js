@@ -9,12 +9,12 @@ const Button = (props) => {
     return (
         <TouchableOpacity
             style={ styles.buttonContainer }
-            onPress={ props.onPress }
+            onPress={ () => props.onPress() }
         >
             <Text
                 style={ styles.textStyle }
             >
-                {props.titulo}
+                { props.titulo }
             </Text>
         </TouchableOpacity>
     )

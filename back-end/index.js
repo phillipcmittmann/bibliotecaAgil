@@ -40,15 +40,15 @@ app.post('/retirarLivro/:id', (req, res) => {
 
 app.post('/doarLivro', (req, res) => {
     LivrosModel
-        .create({
-            titulo: req.body.livro.titulo,
-            autor: req.body.livro.autor,
-            ano: req.body.livro.ano,
-            disponivel: req.body.livro.disponivel,
-            emprestado_para: req.body.livro.emprestadoPara
-        });
+    .create({
+        titulo: req.body.livro.titulo,
+        autor: req.body.livro.autor,
+        ano: req.body.livro.ano,
+        disponivel: req.body.livro.disponivel,
+        emprestado_para: req.body.livro.emprestadoPara
+    });
 
-    res.sendStatus(201);
+    res.status(201).send('Livro cadastrado com sucesso.');
 });
 
 app.listen(4000, () => {

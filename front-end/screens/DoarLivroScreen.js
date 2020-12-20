@@ -3,19 +3,55 @@ import {
     View,
     StyleSheet,
     TextInput,
-    Alert
+    Alert,
+    Text
 } from 'react-native';
 
 import Button from '../components/Button';
+
+import CheckBox from '@react-native-community/checkbox';
+
+import { DOAR_LIVRO } from '../common/Urls';
+
+import axios from 'axios'; 
 
 const DoarLivroScreen = () => {
     const [livro, setLivro] = useState({
         titulo: '',
         autor: '',
         ano: '',
-        disponivel: 1,
-        emprestadoPara: ''
+        emprestadoPara: null
     });
+
+    const [livroDisponivel, setLivroDisponivel] = useState(true)
+
+    const doarLivro = () => {
+        axios.post(DOAR_LIVRO, {
+            livro: livro
+        })
+        .then(function(response) {
+            Alert.alert(
+                '',
+                `${response}`,
+                [
+                    {
+                        text: 'Ok'
+                    }
+                ]
+            )
+        })
+        .catch(function(error) {
+            Alert.alert(
+                'Erro',
+                `${error.message}`,
+                [
+                    {
+                        text: "Ok"
+                    }
+                ]
+            )
+        })
+    }
 
     return (
         <View
@@ -46,21 +82,40 @@ const DoarLivroScreen = () => {
                 }
                 value={ livro.ano }
                 placeholder='Ano'
+                keyboardType='numeric'
             />
-
-            {/* disponivel */}
 
             <TextInput
                 style={ styles.inputContainer }
                 onChangeText={
-                    text => setLivro({ ...livro, emprestadoPara: text })
+                    text => {
+                        setLivro({ ...livro, emprestadoPara: text });
+                        setLivroDisponivel(false);
+                    }
                 }
                 value={ livro.emprestadoPara }
                 placeholder='Emprestado para'
             />
 
+            <View style={ styles.disponivelContainer }>
+                <Text style={ styles.disponivelText }>
+                    Disponivel
+                </Text>
+                
+                <CheckBox
+                    disabled={false}
+                    value={livroDisponivel}
+                    onValueChange={(newValue) => setLivroDisponivel(newValue)}
+                    disabled={
+                        livro.emprestadoPara === null ? false :
+                        livro.emprestadoPara === '' ? false : true
+                    }
+                />
+            </View>
+
             <Button
                 titulo='Confirmar'
+                onPress={doarLivro}
             />
         </View>
     )
@@ -75,12 +130,22 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         marginVertical: 15,
-        width: 200,
+        width: 300,
         borderColor: 'black',
         borderWidth: 2,
         borderRadius: 5,
         backgroundColor: 'white',
         fontSize: 20
+    },
+    disponivelContainer: { 
+        flexDirection: 'row', 
+        alignItems: 'center' 
+    },
+    disponivelText: {
+        fontSize: 20,
+        color: 'white',
+        marginRight: 10,
+        paddingBottom: 5
     }
 });
 
