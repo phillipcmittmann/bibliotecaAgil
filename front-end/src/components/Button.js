@@ -11,9 +11,7 @@ const Button = (props) => {
             style={ styles.buttonContainer }
             onPress={ () => props.onPress() }
         >
-            <Text
-                style={ styles.textStyle }
-            >
+            <Text style={ styles.textStyle }>
                 { props.titulo }
             </Text>
         </TouchableOpacity>

@@ -53,9 +53,7 @@ const DoarLivroScreen = () => {
     }
 
     return (
-        <View
-            style={ styles.container }
-        >
+        <View style={ styles.container }>
             <TextInput
                 style={ styles.inputContainer }
                 onChangeText={

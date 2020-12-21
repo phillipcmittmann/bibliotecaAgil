@@ -8,9 +8,7 @@ import Button from '../components/Button';
 
 const HomeScreen = ({ navigation }) => {
     return (
-        <View
-            style={ styles.container }
-        >
+        <View style={ styles.container }>
             <Button
                 titulo='Retirar livro'
                 onPress={ () => navigation.navigate('RetirarLivro') }
