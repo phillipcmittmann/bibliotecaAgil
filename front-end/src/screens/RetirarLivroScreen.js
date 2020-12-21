@@ -110,6 +110,7 @@ const RetirarLivro = () => {
             <View style={ styles.containerList }>
                 <FlatList
                     data={ livros }
+                    keyExtractor={ (item, index) => index.toString() }
                     renderItem={ ({item, index}) => {
                         return (
                             <ItemLivros
