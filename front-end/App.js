@@ -5,8 +5,8 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeScreen from './screens/HomeScreen';
-import DoarLivroScreen from './screens/DoarLivroScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import DoarLivroScreen from './src/screens/DoarLivroScreen';
 
 const Stack = createStackNavigator();
 
