@@ -116,7 +116,7 @@ app.listen(4000, () => {
                     autor: 'Hortência Marcari',
                     ano: '2010',
                     emprestado_para: null
-                },
+                }
             ]);
         });
 });

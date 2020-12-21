@@ -8,10 +8,9 @@ import {
 } from 'react-native';
 
 import Button from '../components/Button';
+import { DOAR_LIVRO } from '../common/Urls';
 
 import CheckBox from '@react-native-community/checkbox';
-
-import { DOAR_LIVRO } from '../common/Urls';
 
 import axios from 'axios'; 
 
