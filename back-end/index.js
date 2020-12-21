@@ -75,7 +75,22 @@ app.post('/devolverLivro', (req, res) => {
 
         res.sendStatus(200).send('Livro devolvido com sucesso.');
     }
-})
+});
+
+app.get('/livrosDisponiveis', (req, res) => {
+    LivrosModel
+        .findAll({
+            where: { disponivel: 0 },
+            raw: true,
+            order: [
+                ['id', 'DESC']
+            ]
+        })
+        .then(livros => {
+            res.statusCode = 200;
+            res.json(livros);
+        });
+});
 
 app.listen(4000, () => {
     console.log('Api rodando.');
