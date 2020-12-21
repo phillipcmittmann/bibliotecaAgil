@@ -7,7 +7,7 @@ app.use(bodyParser.json());
 
 const LivrosModel = require('./database/models/LivrosModel');
 
-app.get('/livros', (req, res) => {
+app.get('/livrosRetirados', (req, res) => {
     LivrosModel
         .findAll({
             where: { disponivel: 1 },
