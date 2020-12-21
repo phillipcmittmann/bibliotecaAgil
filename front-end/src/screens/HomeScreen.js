@@ -2,6 +2,8 @@ import React from 'react';
 import {
     View,
     StyleSheet,
+    Image,
+    Text
 } from 'react-native';
 
 import Button from '../components/Button';
@@ -9,6 +11,17 @@ import Button from '../components/Button';
 const HomeScreen = ({ navigation }) => {
     return (
         <View style={ styles.container }>
+            <View style={ styles.imagemContainer }>
+                <Image
+                    source={ require('../assets/img/Livro.png') }
+                    style={ styles.imagemStyle }
+                />
+
+                <Text style={ styles.textStyle }>
+                    Biblioteca Ágil
+                </Text>
+            </View>
+
             <Button
                 titulo='Retirar livro'
                 onPress={ () => navigation.navigate('RetirarLivro') }
@@ -33,6 +46,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#4f63d1'
+    },
+    imagemContainer: {
+        marginBottom: '15%',
+        alignItems: 'center'
+    },
+    imagemStyle: {
+        marginBottom: 20
+    },
+    textStyle: {
+        fontSize: 40,
+        color: 'white'
     }
 });
 
