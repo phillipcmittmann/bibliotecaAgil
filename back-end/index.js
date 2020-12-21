@@ -10,7 +10,7 @@ const LivrosModel = require('./database/models/LivrosModel');
 app.get('/livrosRetirados', (req, res) => {
     LivrosModel
         .findAll({
-            where: { disponivel: 1 },
+            where: { disponivel: 0 },
             raw: true,
             order: [
                 ['id', 'DESC']
@@ -80,7 +80,7 @@ app.post('/devolverLivro', (req, res) => {
 app.get('/livrosDisponiveis', (req, res) => {
     LivrosModel
         .findAll({
-            where: { disponivel: 0 },
+            where: { disponivel: 1 },
             raw: true,
             order: [
                 ['id', 'DESC']
