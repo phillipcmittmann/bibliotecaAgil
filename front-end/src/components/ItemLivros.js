@@ -3,7 +3,8 @@ import React from 'react';
 import {
     TouchableOpacity,
     Text,
-    StyleSheet
+    StyleSheet,
+    View
 } from 'react-native';
 
 const ItemLivros = (props) => {
@@ -29,7 +30,7 @@ const ItemLivros = (props) => {
             </Text>
 
             { 
-                props.item.disponivel === 1 ? 
+                props.item.disponivel === 0 ? 
                 (
                     <Text style={ styles.textValues }>
                         Emprestado para: { props.item.emprestadoPara }

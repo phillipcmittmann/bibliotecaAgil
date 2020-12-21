@@ -3,3 +3,4 @@ export const DOAR_LIVRO = `${URL_BASE}/doarLivro`;
 export const LIVROS = `${URL_BASE}/livrosDisponiveis`;
 export const RETIRAR_LIVRO = `${URL_BASE}/retirarLivro`;
 export const DEVOLVER_LIVRO = `${URL_BASE}/devolverLivro`;
+export const LIVROS_RETIRADOS = `${URL_BASE}/livrosRetirados`;

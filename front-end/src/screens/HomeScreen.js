@@ -18,6 +18,7 @@ const HomeScreen = ({ navigation }) => {
 
             <Button
                 titulo='Devolver livro'
+                onPress={ () => navigation.navigate('DevolverLivro') }
             />
 
             <Button
